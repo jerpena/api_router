@@ -10,10 +10,16 @@ const {
 
 const app = express();
 
+// Rate limiting
+const limiter = rateLimit({
+    windowMs: RATE_LIMIT_TIME,
+    max: MAX_RATE
+})
+app.use(limiter)
+app.set('trust proxy', 1)
 
 // Routes
 app.use('/api', require('./routes'))
 
 app.use(cors());
-
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
