@@ -2,6 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit')
 require('dotenv').config();
+const allowedOrigins = (() => {
+    const origins = process.env.ALLOWED_ORIGINS;
+    return origins.split('|')
+})();
+
+const corsOptions = {
+    origin: allowedOrigins
+}
+
 const {
     PORT = 5000,
     RATE_LIMIT_TIME = 3e+5,
@@ -21,5 +30,5 @@ app.set('trust proxy', 1)
 // Routes
 app.use('/api', require('./routes'))
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
