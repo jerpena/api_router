@@ -8,7 +8,18 @@ const allowedOrigins = (() => {
 })();
 
 const corsOptions = {
-    origin: allowedOrigins
+    credentials: true,
+    exposedHeaders: '*',
+    origin: function (origin, callback) {
+        // allow requests with no origin 
+        // if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
 }
 
 const {
@@ -18,7 +29,7 @@ const {
 } = process.env
 
 const app = express();
-
+app.use(cors(corsOptions))
 // Rate limiting
 const limiter = rateLimit({
     windowMs: RATE_LIMIT_TIME,
@@ -30,5 +41,5 @@ app.set('trust proxy', 1)
 // Routes
 app.use('/api', require('./routes'))
 
-app.use(cors(corsOptions));
+    ;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
