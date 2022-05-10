@@ -1,9 +1,9 @@
 const { WEATHER_API_KEY, FOURSQUARE_API_KEY } = process.env
 const config = {
     PORT: 5000,
-    CACHE_TIME: '3 minutes',
+    CACHE_TIME: '10 minutes',
     RATE_LIMIT_TIME: 3e+5, // 5 minutes(300,000 ms)
-    MAX_RATE: 5, // 5 max requests
+    MAX_RATE: 30, // 5 max requests
     allowedOrigins: ['https://5500.code.arct.xyz', 'https://jeremypena.dev'],
     needleOptions: {
         compressed: true,
