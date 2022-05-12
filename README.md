@@ -11,7 +11,6 @@ This proxy that allows you to route requests to a public API without exposing yo
 
 ## Tech stack
 
----
 \
 Node.js  
 [express](https://www.npmjs.com/package/express)  
@@ -22,7 +21,6 @@ Node.js
 
 ## Install
 
----
 \
 Clone the Repo  
 
@@ -38,8 +36,6 @@ npm i
 
 ## Usage  
 
----
-
 ### .env  
 
 This file is where your API keys will live. I have included an example .env file to get you started. When creating this file it is important to have your API keys between quotes like below. Make sure it is in the root folder for the project as well.  
@@ -51,8 +47,9 @@ FOURSQUARE_API_KEY='your_key_here'
 
 ### config.js  
 
-This file contains your proxy objects as well as some configuration options for needle. I have included the OpenWeatherMap API as well as the Foursquare API to get you started.
+This file contains your proxy objects as well as some configuration options for needle. I have included the OpenWeatherMap API as well as the Foursquare API to get you started.  
 
+\
 ***Port***
 Set this to the port you want to run your server on.  
 
