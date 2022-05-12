@@ -19,7 +19,7 @@ const config = {
             },
         },
         {
-            route: '/places',
+            route: '/foursquare',
             allowedMethods: ['GET'],
             url: 'https://api.foursquare.com/v3/places/search',
             params: {
